@@ -35,7 +35,7 @@ def astar1(map, start, end):
         children = []
         for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
-            if node_position[0] > (len(map) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
+            if node_position[0] > (len(map) - 1) or node_position[0] < 0 or node_position[1] > (len(map[len(maze)-1]) -1) or node_position[1] < 0:
                 continue
             if map[node_position[0]][node_position[1]] == 1:
                 continue
@@ -79,7 +79,7 @@ def astar2(map, start, end):# 8방향으로 가게 되면 시간에 따라 변�
         children = []
         for new_position in [(0, 1), (-1, 0), (1, 0),  (-1, 1), (1, 1)]:
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
-            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
+            if node_position[0] > (len(map) - 1) or node_position[0] < 0 or node_position[1] > (len(map[len(map)-1]) -1) or node_position[1] < 0:
                 continue
             if maze[node_position[0]][node_position[1]] == 1:
                 continue
