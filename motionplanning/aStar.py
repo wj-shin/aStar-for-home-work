@@ -8,7 +8,7 @@ class Node():
     def __eq__(self, other):
         return self.position == other.position
 
-def astar1(maze, start, end):
+def astar1(map, start, end):
     start_node = Node(None, start)
     start_node.g = start_node.h = start_node.f = 0
     end_node = Node(None, end)
@@ -35,9 +35,9 @@ def astar1(maze, start, end):
         children = []
         for new_position in [(0, -1), (0, 1), (-1, 0), (1, 0), (-1, -1), (-1, 1), (1, -1), (1, 1)]:
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
-            if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
+            if node_position[0] > (len(map) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
                 continue
-            if maze[node_position[0]][node_position[1]] == 1:
+            if map[node_position[0]][node_position[1]] == 1:
                 continue
             new_node = Node(current_node, node_position)
             children.append(new_node)
@@ -52,7 +52,7 @@ def astar1(maze, start, end):
                 if child == open_node and child.g > open_node.g:
                     continue
             open_list.append(child)
-def astar2(maze, start, end):
+def astar2(map, start, end):# 8방향으로 가게 되면 시간에 따라 변하는 영역에서 아래로 가서 피해가 버리는 현상이 생겨서 그걸 방지하려고 만든 2입니다.
     start_node = Node(None, start)
     start_node.g = start_node.h = start_node.f = 0
     end_node = Node(None, end)
@@ -77,7 +77,7 @@ def astar2(maze, start, end):
                 current = current.parent
             return path[::-1]
         children = []
-        for new_position in [(0, 1), (-1, 0), (1, 0),  (-1, 1), (1, 1)]: # Adjacent squares
+        for new_position in [(0, 1), (-1, 0), (1, 0),  (-1, 1), (1, 1)]:
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
             if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) -1) or node_position[1] < 0:
                 continue
