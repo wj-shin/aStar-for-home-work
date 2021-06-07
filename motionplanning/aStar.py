@@ -81,7 +81,7 @@ def astar2(map, start, end):# 8방향으로 가게 되면 시간에 따라 변�
             node_position = (current_node.position[0] + new_position[0], current_node.position[1] + new_position[1])
             if node_position[0] > (len(map) - 1) or node_position[0] < 0 or node_position[1] > (len(map[len(map)-1]) -1) or node_position[1] < 0:
                 continue
-            if maze[node_position[0]][node_position[1]] == 1:
+            if map[node_position[0]][node_position[1]] == 1:
                 continue
             new_node = Node(current_node, node_position)
             children.append(new_node)
